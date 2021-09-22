@@ -6,26 +6,24 @@ const chars = alphabetBig + alphabetSmall + numbers + katakana;
 
 const canvasElement = document.getElementById("matrix");
 const context = canvasElement.getContext("2d");
+console.log("Wake up, Neo...");
 
 canvasElement.width = window.innerWidth;
 canvasElement.height = window.innerHeight;
 
 const fontSize = 16;
 const columns = Math.floor(canvasElement.width / fontSize);
-// const columns = 2;
 const rows = Math.floor(canvasElement.height / fontSize);
 
-console.log("Wake up, Neo...");
-console.log(columns, rows);
-console.log(canvasElement);
-
+/**
+ * Create a drop object for each column
+ * object is required to holding onto a previous character for effect
+ */
 const rainDrops = new Array(columns).fill(0).map(() => ({
   idx: rows + 2,
   currentChar: "",
   prevChar: "",
 }));
-
-console.log(rainDrops);
 
 let lastTime = 0;
 const FPS = 30;
